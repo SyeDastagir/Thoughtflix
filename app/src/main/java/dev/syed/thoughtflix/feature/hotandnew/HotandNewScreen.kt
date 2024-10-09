@@ -1,4 +1,4 @@
-package dev.syed.thoughtflix.feature.profile
+package dev.syed.thoughtflix.feature.hotandnew
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,14 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun ProfileScreen() {
+fun HotandNewScreen() {
     val navController = rememberNavController()
     Scaffold(
     ) { innerPadding ->
         Column(modifier = Modifier.fillMaxSize().padding(innerPadding), verticalArrangement = Arrangement.SpaceBetween) {
-            Text("Profile Screen")
-
+            Text("HotAndNew Screen")
         }
     }
 }
-

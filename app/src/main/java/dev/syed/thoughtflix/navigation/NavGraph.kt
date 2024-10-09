@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import dev.syed.thoughtflix.feature.auth.signin.AuthenticationScreen
 import dev.syed.thoughtflix.feature.auth.signup.SignUpScreen
-import dev.syed.thoughtflix.feature.main.MainScreen
+import dev.syed.thoughtflix.feature.dashboard.DashboardScreen
 
 @Composable
 fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
@@ -19,7 +19,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
         composable(AppDestinations.Authentication.route) {
             AuthenticationScreen(
                 innerPadding = innerPadding,
-                onLogin = { navController.navigate(AppDestinations.Home.route){
+                onSignIn = { navController.navigate(AppDestinations.Home.route){
                     popUpTo(AppDestinations.Authentication.route) { inclusive = true }
                 } },
                 onSignUp = { navController.navigate(AppDestinations.SignUp.route) }
@@ -31,7 +31,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
                 onSignUp = { navController.navigate(AppDestinations.Authentication.route) })
         }
         composable(AppDestinations.Home.route) {
-            MainScreen()
+            DashboardScreen()
         }
     }
 }
