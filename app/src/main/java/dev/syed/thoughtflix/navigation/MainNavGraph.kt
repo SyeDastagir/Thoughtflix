@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import dev.syed.thoughtflix.feature.download.DownloadScreen
 import dev.syed.thoughtflix.feature.home.HomeScreen
-import dev.syed.thoughtflix.feature.profile.ProfileScreen
+import dev.syed.thoughtflix.feature.hotandnew.HotandNewScreen
 import dev.syed.thoughtflix.feature.search.SearchScreen
 
 @Composable
@@ -17,16 +17,16 @@ fun MainNavGraph(navController: NavHostController, innerPadding: PaddingValues) 
         startDestination = AppDestinations.Home.route
     ) {
         composable(AppDestinations.Home.route) {
-            HomeScreen()
+            HomeScreen(innerPadding)
+        }
+        composable(AppDestinations.HotAndNew.route) {
+            HotandNewScreen()
         }
         composable(AppDestinations.Search.route) {
             SearchScreen()
         }
         composable(AppDestinations.Download.route) {
             DownloadScreen()
-        }
-        composable(AppDestinations.Profile.route) {
-            ProfileScreen()
         }
     }
 }

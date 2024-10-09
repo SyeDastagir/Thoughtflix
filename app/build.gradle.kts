@@ -1,7 +1,11 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
+
 
 android {
     namespace = "dev.syed.thoughtflix"
@@ -18,6 +22,19 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val localProperties = Properties()
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localProperties.load(FileInputStream(localPropertiesFile))
+        }
+        val apiKey: String = localProperties.getProperty("api_key", "")
+        val apiToken: String = localProperties.getProperty("api_token", "")
+        val baseUrl: String = localProperties.getProperty("base_url", "")
+
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
+        buildConfigField("String", "API_TOKEN", "\"$apiToken\"")
+        buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
     }
 
     buildTypes {
@@ -38,6 +55,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -75,6 +93,16 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    //Image loading coil
+    implementation(libs.coil.compose)
+
+    //Splash screen api
+    implementation(libs.androidx.core.splashscreen)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

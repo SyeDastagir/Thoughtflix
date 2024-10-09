@@ -1,12 +1,10 @@
 package dev.syed.thoughtflix.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.ui.graphics.vector.ImageVector
+import dev.syed.thoughtflix.R
 
-sealed class BottomNavItem(val route: String, val icon: ImageVector, val title: String) {
-    object Home : BottomNavItem(AppDestinations.Home.route, Icons.Default.Home, "Home")
-    object Search : BottomNavItem(AppDestinations.Search.route, Icons.Default.Search, "Search")
-    object Download : BottomNavItem(AppDestinations.Download.route, Icons.Default.Favorite, "Download")
-    object Profile : BottomNavItem(AppDestinations.Profile.route, Icons.Default.Person, "Profile")
+sealed class BottomNavItem(val route: String, val icon: Int, val title: String) {
+    object Home : BottomNavItem(AppDestinations.Home.route, R.drawable.home, "Home")
+    object HotAndNew : BottomNavItem(AppDestinations.HotAndNew.route, R.drawable.hot_and_new, "New & Hot")
+    object Search : BottomNavItem(AppDestinations.Search.route, R.drawable.search, "Search")
+    object Download : BottomNavItem(AppDestinations.Download.route, R.drawable.download, "Download")
 }
