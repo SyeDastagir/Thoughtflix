@@ -5,6 +5,9 @@ import dev.syed.thoughtflix.data.remote.AuthInterceptor
 import dev.syed.thoughtflix.feature.auth.signin.AuthenticationViewModel
 import dev.syed.thoughtflix.feature.auth.signup.SignUpViewModel
 import dev.syed.thoughtflix.feature.home.HomeViewmodel
+import dev.syed.thoughtflix.feature.hotandnew.HotAndNewViewmodel
+import dev.syed.thoughtflix.feature.moviedetail.MovieDetailViewModel
+import dev.syed.thoughtflix.feature.search.SearchViewmodel
 import dev.syed.thoughtflix.network.MovieApiService
 import dev.syed.thoughtflix.repository.MovieRepository
 import okhttp3.OkHttpClient
@@ -19,6 +22,9 @@ val viewModelModule = module {
     viewModel { AuthenticationViewModel() }
     viewModel { SignUpViewModel() }
     viewModel { HomeViewmodel(get()) }
+    viewModel { SearchViewmodel(get()) }
+    viewModel { HotAndNewViewmodel(get()) }
+    viewModel { MovieDetailViewModel(get()) }
 }
 
 val repositoryModule = module {

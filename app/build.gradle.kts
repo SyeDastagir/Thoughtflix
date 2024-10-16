@@ -69,9 +69,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.runtime.livedata)
-    val lifecycle_version = "2.8.6"
-    val arch_version = "2.2.0"
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -103,6 +100,11 @@ dependencies {
 
     //Splash screen api
     implementation(libs.androidx.core.splashscreen)
+
+    //Paging
+    implementation(libs.androidx.paging.runtime)
+    //Paging - Jetpack Compose integration
+    implementation(libs.androidx.paging.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

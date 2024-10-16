@@ -1,6 +1,8 @@
 package dev.syed.thoughtflix.components
 
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -19,6 +21,8 @@ fun TTextField(
     onValueChange: (String) -> Unit,
     visualTransformation: VisualTransformation = VisualTransformation. None,
     supportingText: String? = null,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
     isError: Boolean = false
 ) {
     TextField(
@@ -39,13 +43,8 @@ fun TTextField(
             unfocusedPlaceholderColor = Color.Black,
         ),
         value = value,
-        onValueChange = {
-            onValueChange(it)
-
-        },
-        label = {
-            Text(label)
-        },
+        onValueChange = { onValueChange(it) },
+        label = { Text(label) },
         visualTransformation = visualTransformation,
         isError = isError,
         supportingText = {
@@ -56,6 +55,8 @@ fun TTextField(
                     style = MaterialTheme.typography.bodySmall
                 )
             }
-        }
+        },
+        keyboardActions = keyboardActions,
+        keyboardOptions = keyboardOptions,
     )
 }

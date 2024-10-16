@@ -1,6 +1,5 @@
 package dev.syed.thoughtflix.feature.auth.signin
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,7 +10,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -21,15 +23,12 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import dev.syed.thoughtflix.R
 import dev.syed.thoughtflix.components.TButton
 import dev.syed.thoughtflix.components.TTextField
 import org.koin.androidx.compose.koinViewModel
@@ -45,11 +44,14 @@ fun AuthenticationScreen(
     val password by viewModel.password.observeAsState("")
     val emailError by viewModel.emailError.observeAsState(null)
     val passwordError by viewModel.passwordError.observeAsState(null)
+
     Column(
         modifier = Modifier
-            .padding(innerPadding)
             .background(Color.Black)
+            .padding(innerPadding)
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .imePadding()
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -69,15 +71,9 @@ fun AuthenticationScreen(
             onValueChange = {
                 viewModel.onEmailChange(it)
             },
-            isError = emailError != null
+            isError = emailError != null,
+            supportingText = emailError ?: ""
         )
-        if (emailError != null) {
-            Text(
-                text = emailError ?: "",
-                color = MaterialTheme.colorScheme.error,
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
         Spacer(modifier = Modifier.height(8.dp))
         TTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -87,15 +83,9 @@ fun AuthenticationScreen(
                 viewModel.onPasswordChange(it)
             },
             visualTransformation = PasswordVisualTransformation(),
-            isError = passwordError != null
+            isError = passwordError != null,
+            supportingText = passwordError ?: ""
         )
-        if (passwordError != null) {
-            Text(
-                text = passwordError ?: "",
-                color = MaterialTheme.colorScheme.error,
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
         Spacer(modifier = Modifier.height(16.dp))
 
         TButton(
@@ -104,7 +94,9 @@ fun AuthenticationScreen(
             contentColor = Color.White,
             borderColor = Color.Transparent,
             label = "Sign In",
-            onClick = onSignIn
+            onClick = {
+                if (viewModel.validateCredentials()) onSignIn()
+            }
         )
         Spacer(modifier = Modifier.height(8.dp))
         Row(

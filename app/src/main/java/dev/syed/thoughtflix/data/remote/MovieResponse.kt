@@ -14,7 +14,7 @@ data class MovieResponse(
 data class Movie(
     val adult: Boolean,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String? = null,
     @SerializedName("genre_ids")
     val genreIds: List<Int>,
     val id: Int,
@@ -25,7 +25,7 @@ data class Movie(
     val overview: String,
     val popularity: Double,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String? = null,
     @SerializedName("release_date")
     val releaseDate: String,
     val title: String,

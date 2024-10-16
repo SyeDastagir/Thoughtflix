@@ -17,6 +17,7 @@ composeBom = "2024.04.01"
 lifecycleRuntimeKtxVersion = "2.8.6"
 lifecycleViewmodelKtx = "2.8.6"
 navigationCompose = "2.8.2"
+pagingRuntime = "3.3.2"
 retrofit = "2.9.0"
 runtimeLivedata = "1.7.3"
 
@@ -28,6 +29,8 @@ androidx-lifecycle-runtime-ktx-v286 = { module = "androidx.lifecycle:lifecycle-r
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingRuntime" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

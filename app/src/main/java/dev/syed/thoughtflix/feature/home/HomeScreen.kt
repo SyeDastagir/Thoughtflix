@@ -153,7 +153,7 @@ fun MainContent(movieResponse: MovieResponse?) {
                 modifier = Modifier
                     .fillMaxSize(),
                 contentScale = ContentScale.Crop,
-                model = movie.posterPath.getImageFullUrl(W500),
+                model = movie.posterPath?.getImageFullUrl(W500),
                 contentDescription = "Movie Poster"
             )
             Box(
@@ -288,7 +288,7 @@ private fun MoviePosterRow(title: String, movieResponse: MovieResponse) {
                 AsyncImage(
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop,
-                    model = movieResponse.results[it].posterPath.getImageFullUrl(W500),
+                    model = movieResponse.results[it].posterPath?.getImageFullUrl(W500),
                     contentDescription = "Movie Poster"
                 )
                 Image(
@@ -323,7 +323,7 @@ private fun MovieBackdropRow(title: String, movieResponse: MovieResponse) {
                 AsyncImage(
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop,
-                    model = movie.backdropPath.getImageFullUrl(W500),
+                    model = movie.backdropPath?.getImageFullUrl(W500),
                     contentDescription = "Movie Poster"
                 )
                 Box(

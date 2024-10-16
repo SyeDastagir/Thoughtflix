@@ -17,4 +17,13 @@ interface MovieApiService {
 
     @GET("movie/upcoming")
     suspend fun getUpcomingMovies(@Query("page") page: Int): Response<MovieResponse>
+
+    @GET("trending/movie/day")
+    suspend fun getTrendingMovies(@Query("page") page: Int): Response<MovieResponse>
+
+    @GET("search/movie")
+    suspend fun searchMovies(@Query("query") query: String, @Query("page") page: Int): Response<MovieResponse>
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(@Query("movie_id") movieId: Int): Response<MovieResponse>
 }
